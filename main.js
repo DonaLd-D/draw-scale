@@ -26,14 +26,18 @@ function onPointerDown(e) {
 
 function onPointerup(e){
   let x = e.data.global.x,y = e.data.global.y;
-  points.push({x,y})
-  console.log(points)
+  if(points.length<2){
+    points.push({x,y})
+  }
+  // console.log(points)
   drawLine(points)
 }
 
 function onPointermove(e){
   let x = e.data.global.x,y = e.data.global.y;
-  drawLine(points.concat({x,y}))
+  if(points.length<2){
+    drawLine(points.concat({x,y}))
+  }
 }
 
 function drawLine(points){
